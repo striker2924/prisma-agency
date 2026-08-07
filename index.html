@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Prisma Agency — Digitalizamos comercios con webs que trabajan solas. Diseño web, chatbots con IA y branding profesional.">
+<meta property="og:title" content="Prisma Agency — Tu web es una oficina que trabaja sola">
+<meta property="og:description" content="Diseño web, chatbots con IA y branding profesional para comercios y negocios.">
+<meta name="theme-color" content="#07070E">
+<title>Prisma Agency — Digitalización para comercios</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #07070E; --surface: #0F0F1A; --surface2: #14141F;
+    --border: rgba(255,255,255,0.07); --border-hover: rgba(255,255,255,0.15);
+    --text: #F0F0F0; --muted: #7A7A9A;
+    --v: #7B5CF5; --c: #00D4FF; --r: #FF6B6B;
+    --grad: linear-gradient(90deg, #7B5CF5, #00D4FF, #FF6B6B);
+    --grad-diag: linear-gradient(135deg, #7B5CF5, #00D4FF, #FF6B6B);
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 2.5rem;
+    background: rgba(7,7,14,0.88); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo { font-family: 'Syne', sans-serif; font-weight: 800; display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-icon { width: 26px; height: 26px; }
+  .logo-word { font-size: 1.2rem; letter-spacing: 0.04em; color: var(--text); }
+  .logo-sub { font-family: 'Inter', sans-serif; font-size: 0.5rem; font-weight: 400; color: var(--muted); letter-spacing: 0.22em; display: block; margin-top: -3px; }
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav ul a { color: var(--muted); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.01em; transition: color 0.2s; }
+  nav ul a:hover { color: var(--text); }
+  .btn-nav { background: transparent; border: 1px solid rgba(123,92,245,0.5); color: var(--v); padding: 0.5rem 1.2rem; border-radius: 7px; font-family: 'Inter', sans-serif; font-size: 0.82rem; cursor: pointer; transition: all 0.2s; }
+  .btn-nav:hover { background: var(--v); color: #fff; border-color: var(--v); }
+  .menu-mobile { display: none; background: none; border: none; color: var(--text); font-size: 1.3rem; cursor: pointer; z-index: 101; position: relative; }
+
+  /* ===== MENÚ MÓVIL ===== */
+  #mobile-nav {
+    position: fixed; top: 62px; left: 0; right: 0; z-index: 99;
+    background: rgba(7,7,14,0.98); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    display: flex; flex-direction: column; padding: 0.5rem 1.5rem 1.25rem;
+    transform: translateY(-10px); opacity: 0; visibility: hidden;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  }
+  #mobile-nav.open { opacity: 1; transform: translateY(0); visibility: visible; }
+  .mobile-nav-link {
+    color: var(--text); text-decoration: none; font-size: 0.95rem;
+    padding: 0.85rem 0; border-bottom: 1px solid var(--border);
+  }
+  .mobile-nav-link:hover { color: var(--v); }
+
+  /* ===== HERO ===== */
+  #hero {
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    padding: 8rem 2rem 5rem; position: relative; overflow: hidden;
+  }
+  .hero-glow {
+    position: absolute; width: 700px; height: 700px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(123,92,245,0.1) 0%, rgba(0,212,255,0.04) 50%, transparent 70%);
+    top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;
+  }
+  .hero-dots {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: radial-gradient(rgba(123,92,245,0.12) 1px, transparent 1px);
+    background-size: 40px 40px; mask-image: radial-gradient(ellipse 60% 60% at center, black, transparent);
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(123,92,245,0.1); border: 1px solid rgba(123,92,245,0.25);
+    border-radius: 100px; padding: 0.35rem 1rem;
+    font-size: 0.72rem; color: var(--v); letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 2rem; position: relative;
+  }
+  .badge-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--v); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
+
+  h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2.8rem, 6.5vw, 5.2rem); line-height: 1.03; letter-spacing: -0.025em; margin-bottom: 1.5rem; position: relative; }
+  .grad-text { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-desc { font-size: 1.1rem; color: var(--muted); max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.8; position: relative; }
+  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+  .btn-primary { background: var(--grad); border: none; color: #fff; padding: 0.9rem 2rem; border-radius: 9px; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: opacity 0.2s, transform 0.2s; }
+  .btn-primary:hover { opacity: 0.86; transform: translateY(-2px); }
+  .btn-secondary { background: transparent; border: 1px solid var(--border-hover); color: var(--text); padding: 0.9rem 2rem; border-radius: 9px; font-family: 'Inter', sans-serif; font-size: 0.9rem; cursor: pointer; transition: border-color 0.2s; }
+  .btn-secondary:hover { border-color: rgba(255,255,255,0.3); }
+  .hero-metrics { display: flex; gap: 3rem; justify-content: center; margin-top: 4.5rem; position: relative; }
+  .metric-num { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .metric-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.1rem; }
+
+  /* ===== SECTIONS ===== */
+  section { padding: 5.5rem 2rem; }
+  .container { max-width: 920px; margin: 0 auto; }
+  .sec-tag { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--v); margin-bottom: 0.75rem; }
+  h2 { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; line-height: 1.18; margin-bottom: 1rem; }
+  .sec-desc { color: var(--muted); max-width: 480px; margin-bottom: 3rem; line-height: 1.75; }
+  .hr { border: none; border-top: 1px solid var(--border); }
+
+  /* SERVICIOS */
+  .srv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.2rem; }
+  .srv-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; position: relative; overflow: hidden; transition: border-color 0.25s, transform 0.25s; cursor: default; }
+  .srv-card:hover { border-color: rgba(123,92,245,0.35); transform: translateY(-4px); }
+  .srv-card::after { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--grad); transform:scaleX(0); transform-origin:left; transition:transform 0.3s; }
+  .srv-card:hover::after { transform:scaleX(1); }
+  .srv-icon { width:42px; height:42px; background:rgba(123,92,245,0.1); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; margin-bottom:1.1rem; }
+  .srv-card h3 { font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; margin-bottom:0.45rem; }
+  .srv-card p { font-size:0.862rem; color:var(--muted); line-height:1.65; }
+
+  /* PAQUETES */
+  .pkg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
+  .pkg { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:1.85rem 1.6rem; position:relative; transition:transform 0.25s; }
+  .pkg:hover { transform:translateY(-4px); }
+  .pkg-featured { border-color:rgba(123,92,245,0.45); background:linear-gradient(160deg,rgba(123,92,245,0.07),rgba(0,212,255,0.03)); }
+  .badge-feat { position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:var(--grad); color:#fff; font-size:0.6rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.22rem 0.9rem; border-radius:100px; white-space:nowrap; }
+  .pkg-tier { font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:0.5rem; }
+  .pkg-price { font-family:'Syne',sans-serif; font-size:2.5rem; font-weight:800; line-height:1.0; margin-bottom:0.2rem; }
+  .pkg-price.g { background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .pkg-period { font-size:0.78rem; color:var(--muted); margin-bottom:1.1rem; }
+  .pkg-body { font-size:0.82rem; color:var(--muted); line-height:1.6; margin-bottom:1.25rem; }
+  .pkg-list { list-style:none; display:flex; flex-direction:column; gap:0.45rem; }
+  .pkg-list li { font-size:0.8rem; color:var(--muted); display:flex; gap:0.5rem; align-items:flex-start; }
+  .pkg-list li::before { content:'→'; color:var(--v); flex-shrink:0; font-size:0.72rem; margin-top:0.18rem; }
+
+  /* PROCESO */
+  .proc { display:flex; flex-direction:column; gap:1.25rem; }
+  .proc-step { display:flex; gap:1.5rem; background:var(--surface); border:1px solid var(--border); border-radius:13px; padding:1.5rem 1.75rem; align-items:flex-start; }
+  .proc-n { font-family:'Syne',sans-serif; font-size:2.8rem; font-weight:800; background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; flex-shrink:0; width:52px; }
+  .proc-step h3 { font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; margin-bottom:0.3rem; }
+  .proc-step p { font-size:0.85rem; color:var(--muted); }
+
+  /* FAQ */
+  .faq-list { display:flex; flex-direction:column; gap:0.75rem; }
+  .faq-item { background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+  .faq-q { width:100%; background:none; border:none; color:var(--text); font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:600; text-align:left; padding:1.25rem 1.5rem; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:1rem; transition:color 0.2s; }
+  .faq-q:hover { color:var(--v); }
+  .faq-icon { font-size:0.9rem; color:var(--muted); transition:transform 0.25s; flex-shrink:0; }
+  .faq-a { display:none; padding:0 1.5rem 1.25rem; font-size:0.875rem; color:var(--muted); line-height:1.75; }
+  .faq-item.open .faq-a { display:block; }
+  .faq-item.open .faq-icon { transform:rotate(45deg); color:var(--v); }
+
+  /* CTA FINAL */
+  .cta-box { background:var(--surface); border:1px solid var(--border); border-radius:22px; padding:4rem 3rem; text-align:center; position:relative; overflow:hidden; }
+  .cta-glow { position:absolute; width:500px; height:400px; border-radius:50%; background:radial-gradient(circle,rgba(123,92,245,0.09) 0%,transparent 70%); top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none; }
+  .cta-box h2 { position:relative; }
+  .cta-box p { color:var(--muted); max-width:420px; margin:0.75rem auto 2.25rem; position:relative; }
+  .cta-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; position:relative; }
+
+  /* FOOTER */
+  footer { border-top:1px solid var(--border); padding:2rem 2.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+  .footer-logo { font-family:'Syne',sans-serif; font-weight:800; font-size:1rem; display:flex; align-items:center; gap:8px; color:var(--text); }
+  footer p { font-size:0.78rem; color:var(--muted); }
+  .footer-links { display:flex; gap:1.5rem; }
+  .footer-links a { font-size:0.78rem; color:var(--muted); text-decoration:none; transition:color 0.2s; }
+  .footer-links a:hover { color:var(--text); }
+
+  /* ANIMATIONS */
+  .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.in { opacity:1; transform:translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 680px) {
+    nav ul, .btn-nav { display:none; }
+    .menu-mobile { display:block; }
+    .hero-metrics { gap:1.5rem; flex-wrap:wrap; }
+    .cta-box { padding:2.5rem 1.5rem; }
+    footer { flex-direction:column; text-align:center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <svg class="logo-icon" viewBox="0 0 28 28" fill="none">
+      <polygon points="14,2 26,24 2,24" fill="none" stroke="url(#nl)" stroke-width="2" stroke-linejoin="round"/>
+      <line x1="14" y1="2" x2="8" y2="24" stroke="url(#nl2)" stroke-width="1" opacity="0.5"/>
+      <line x1="14" y1="2" x2="20" y2="24" stroke="url(#nl3)" stroke-width="1" opacity="0.5"/>
+      <circle cx="14" cy="2" r="2" fill="#7B5CF5"/>
+      <circle cx="4" cy="24" r="1.5" fill="#7B5CF5" opacity="0.6"/>
+      <circle cx="14" cy="24" r="1.5" fill="#00D4FF" opacity="0.6"/>
+      <circle cx="24" cy="24" r="1.5" fill="#FF6B6B" opacity="0.6"/>
+      <defs>
+        <linearGradient id="nl" x1="2" y1="2" x2="26" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="#7B5CF5"/><stop offset="0.5" stop-color="#00D4FF"/><stop offset="1" stop-color="#FF6B6B"/></linearGradient>
+        <linearGradient id="nl2" x1="14" y1="2" x2="8" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="#7B5CF5"/><stop offset="1" stop-color="#00D4FF"/></linearGradient>
+        <linearGradient id="nl3" x1="14" y1="2" x2="20" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="#00D4FF"/><stop offset="1" stop-color="#FF6B6B"/></linearGradient>
+      </defs>
+    </svg>
+    <div><span class="logo-word">PRISMA</span><span class="logo-sub">AGENCY</span></div>
+  </a>
+  <ul>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#paquetes">Paquetes</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <button class="btn-nav" id="btn-contacto">Escribir al equipo</button>
+  <button class="menu-mobile" id="menu-mobile-btn" aria-label="Abrir menú" aria-expanded="false">☰</button>
+</nav>
+
+<!-- MENÚ MÓVIL -->
+<div id="mobile-nav" aria-hidden="true">
+  <a href="#servicios" class="mobile-nav-link">Servicios</a>
+  <a href="#paquetes" class="mobile-nav-link">Paquetes</a>
+  <a href="#proceso" class="mobile-nav-link">Proceso</a>
+  <a href="#faq" class="mobile-nav-link">FAQ</a>
+  <button class="btn-primary" id="btn-contacto-mobile" style="margin-top:0.6rem; width:100%;">Escribir al equipo</button>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-badge"><span class="badge-dot"></span>Agencia digital</div>
+  <h1>Tu web es una<br><span class="grad-text">oficina que trabaja<br>sola.</span></h1>
+  <p class="hero-desc">Digitalizamos comercios con páginas web profesionales, chatbots con IA y branding que se recuerda. Sin complicaciones, en 48 horas.</p>
+  <div class="hero-btns">
+    <button class="btn-primary" onclick="document.getElementById('paquetes').scrollIntoView({behavior:'smooth'})">Ver paquetes</button>
+    <button class="btn-secondary" onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'})">Conocer servicios</button>
+  </div>
+  <div class="hero-metrics">
+    <div><div class="metric-num">48h</div><div class="metric-label">Primera versión entregada</div></div>
+    <div><div class="metric-num">24/7</div><div class="metric-label">Tu web trabaja siempre</div></div>
+    <div><div class="metric-num">100%</div><div class="metric-label">Personalizado para ti</div></div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="container">
+    <div class="sec-tag">Lo que hacemos</div>
+    <h2>Todo lo que tu negocio<br>necesita en digital.</h2>
+    <p class="sec-desc">Desde cero hasta presencia web profesional. Sin pasos intermedios, sin complicaciones técnicas de tu parte.</p>
+    <div class="srv-grid reveal">
+      <div class="srv-card"><div class="srv-icon">🌐</div><h3>Diseño web</h3><p>Páginas web rápidas, móviles y optimizadas para convertir visitas en clientes reales.</p></div>
+      <div class="srv-card"><div class="srv-icon">🤖</div><h3>Chatbot con IA</h3><p>Tu web responde preguntas, agenda citas y captura leads automáticamente, todo el día.</p></div>
+      <div class="srv-card"><div class="srv-icon">✦</div><h3>Identidad de marca</h3><p>Logo, paleta, tipografías y manual completo. La imagen profesional que tu negocio merece.</p></div>
+      <div class="srv-card"><div class="srv-icon">🔍</div><h3>SEO básico</h3><p>Optimización para que tu negocio aparezca en Google cuando te buscan en tu ciudad.</p></div>
+      <div class="srv-card"><div class="srv-icon">🗺️</div><h3>Google My Business</h3><p>Ficha local optimizada con fotos, horarios y reseñas. Presencia desde el primer día.</p></div>
+      <div class="srv-card"><div class="srv-icon">📲</div><h3>Contenido para redes</h3><p>Pack de posts diseñados con tu marca para mantener activas tus redes sociales.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- PAQUETES -->
+<section id="paquetes">
+  <div class="container">
+    <div class="sec-tag">Inversión</div>
+    <h2>Elige tu punto de entrada.</h2>
+    <p class="sec-desc">Precios claros desde el primer día. Sin sorpresas, sin costos ocultos.</p>
+    <div class="pkg-grid reveal">
+      <div class="pkg">
+        <div class="pkg-tier">Lanzamiento</div>
+        <div class="pkg-price">$300</div>
+        <div class="pkg-period">pago único</div>
+        <div class="pkg-body">Para profesionales y pequeños comercios que necesitan presencia web urgente y profesional.</div>
+        <ul class="pkg-list">
+          <li>Landing page 1 página</li><li>Diseño mobile-first</li><li>Logo + paleta de colores</li><li>Copywriting incluido</li><li>Dominio primer año</li><li>Formulario de contacto</li>
+        </ul>
+      </div>
+      <div class="pkg pkg-featured">
+        <div class="badge-feat">Más popular</div>
+        <div class="pkg-tier">Corporativo</div>
+        <div class="pkg-price g">$650</div>
+        <div class="pkg-period">pago único</div>
+        <div class="pkg-body">Para empresas que quieren una presencia digital completa, profesional y bien posicionada.</div>
+        <ul class="pkg-list">
+          <li>Sitio web 5 secciones</li><li>SEO básico para Google</li><li>Manual de marca completo</li><li>Google My Business</li><li>Dominio + hosting 1 año</li><li>Integración WhatsApp</li>
+        </ul>
+      </div>
+      <div class="pkg">
+        <div class="pkg-tier">Prisma Pro</div>
+        <div class="pkg-price">$1,100</div>
+        <div class="pkg-period">pago único</div>
+        <div class="pkg-body">La web que literalmente trabaja sola. Con IA integrada que atiende a tus clientes 24/7.</div>
+        <ul class="pkg-list">
+          <li>Todo lo del Corporativo</li><li>Chatbot con IA incluido</li><li>Captura automática de leads</li><li>Google Analytics</li><li>Integración WhatsApp</li><li>Soporte 3 meses</li>
+        </ul>
+      </div>
+      <div class="pkg">
+        <div class="pkg-tier">Suscripción</div>
+        <div class="pkg-price">$50</div>
+        <div class="pkg-period">/ mes · mín. 12 meses</div>
+        <div class="pkg-body">Inicia con inversión mínima. Nosotros hacemos la web y la marca, tú pagas mensual.</div>
+        <ul class="pkg-list">
+          <li>Web + marca incluidas</li><li>Hosting y dominio</li><li>Mantenimiento mensual</li><li>Soporte técnico</li><li>Cambios menores incluidos</li><li>Sin costo inicial alto</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- PROCESO -->
+<section id="proceso">
+  <div class="container">
+    <div class="sec-tag">Cómo trabajamos</div>
+    <h2>Del primer contacto<br>a tu web en vivo.</h2>
+    <p class="sec-desc">Un proceso transparente de 4 pasos. Tú ves cada avance antes de que lo publiquemos.</p>
+    <div class="proc reveal">
+      <div class="proc-step"><div class="proc-n">1</div><div><h3>Llamada de 15 minutos</h3><p>Escríbenos y en menos de 24 horas evaluamos tu proyecto y te decimos exactamente qué necesitas. Sin compromiso.</p></div></div>
+      <div class="proc-step"><div class="proc-n">2</div><div><h3>Propuesta y arranque</h3><p>Enviamos propuesta formal en 24 horas. Al confirmar, recibes el contrato y arrancamos con el diseño.</p></div></div>
+      <div class="proc-step"><div class="proc-n">3</div><div><h3>Primera versión en 48 horas</h3><p>Ves el diseño real de tu web. Haces los cambios que quieras hasta estar 100% conforme.</p></div></div>
+      <div class="proc-step"><div class="proc-n">4</div><div><h3>Tu web va al aire</h3><p>Publicamos con tu dominio propio. Recibes todos los accesos. Tu nueva oficina está abierta.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="sec-tag">Preguntas frecuentes</div>
+    <h2>Lo que más nos preguntan.</h2>
+    <p class="sec-desc">Si tienes alguna duda que no está aquí, escríbenos a prisma.agency.net@gmail.com</p>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q">¿Necesito tener algo preparado antes de contactarlos? <span class="faq-icon">+</span></button>
+        <div class="faq-a">No. Nosotros te guiamos desde cero. En la llamada de 15 minutos te hacemos las preguntas correctas para entender tu negocio y proponer la mejor solución. Solo necesitas saber qué hace tu negocio y qué quieres lograr con la web.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿El dominio y hosting están incluidos? <span class="faq-icon">+</span></button>
+        <div class="faq-a">En los paquetes Corporativo y Prisma Pro, el dominio y el hosting del primer año están incluidos. En el paquete Lanzamiento, el dominio del primer año está incluido. En la suscripción mensual, el hosting y dominio están cubiertos durante todo el contrato.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Puedo hacer cambios después de que la web esté publicada? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Sí. Los clientes con suscripción mensual tienen cambios menores incluidos (textos, fotos, precios). Los clientes con pago único tienen 30 días de soporte post-entrega. Después, ofrecemos planes de mantenimiento mensual desde $50/mes.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Qué es exactamente el chatbot con IA? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Es un asistente virtual integrado en tu web que usa inteligencia artificial (Claude de Anthropic) para responder preguntas de tus clientes en tiempo real. Lo configuramos con toda la información de tu negocio: horarios, precios, servicios, cómo hacer reservas, etc. Funciona 24/7 y captura automáticamente los datos de los interesados.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿En cuánto tiempo tengo mi web publicada? <span class="faq-icon">+</span></button>
+        <div class="faq-a">La primera versión la ves en 48 horas hábiles después de confirmar el proyecto. La versión final con tus ajustes suele estar publicada entre 5 y 10 días hábiles, dependiendo de la rapidez en el intercambio de contenido y aprobaciones.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- CTA CONTACTO -->
+<section id="contacto">
+  <div class="container">
+    <div class="cta-box reveal">
+      <div class="cta-glow"></div>
+      <h2>¿Listo para que tu<br><span class="grad-text">negocio trabaje en digital?</span></h2>
+      <p>Escríbenos hoy. En menos de 24 horas te decimos exactamente qué necesitas, cuánto cuesta y cuándo lo tienes.</p>
+      <div class="cta-btns">
+        <a href="mailto:prisma.agency.net@gmail.com?subject=Quiero%20digitalizar%20mi%20negocio" class="btn-primary" style="text-decoration:none">Escribirnos por correo →</a>
+        <a href="mailto:prisma.agency.net@gmail.com" class="btn-secondary" style="text-decoration:none">prisma.agency.net@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <svg width="18" height="18" viewBox="0 0 28 28" fill="none">
+      <polygon points="14,2 26,24 2,24" fill="none" stroke="url(#fl)" stroke-width="2" stroke-linejoin="round"/>
+      <defs><linearGradient id="fl" x1="2" y1="2" x2="26" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="#7B5CF5"/><stop offset="0.5" stop-color="#00D4FF"/><stop offset="1" stop-color="#FF6B6B"/></linearGradient></defs>
+    </svg>
+    PRISMA AGENCY
+  </div>
+  <p>© 2025 Prisma Agency · somosprismaagency.com</p>
+  <div class="footer-links">
+    <a href="https://somosprismaagency.com">Web</a>
+    <a href="mailto:prisma.agency.net@gmail.com">Correo</a>
+    <a href="#">Instagram</a>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); }), {threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // FAQ
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const open = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!open) item.classList.add('open');
+    });
+  });
+</script>
+
+
+<!-- ============================================================
+     MODAL DE CONTACTO
+     Aparece al hacer clic en "Escribir al equipo"
+     Controlado por: openModal() / closeModal()
+     ============================================================ -->
+<div id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div id="modal-box">
+    <button id="modal-close" aria-label="Cerrar">&times;</button>
+    <div id="modal-icon">✉️</div>
+    <h3 id="modal-title">¡Hablemos!</h3>
+    <p id="modal-sub">Cuéntanos de tu negocio y te respondemos en menos de 24 horas.</p>
+
+    <form id="contact-form" novalidate>
+      <input type="hidden" name="_subject" value="Nuevo mensaje desde la web — Prisma Agency">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+      <div class="form-row">
+        <label for="cf-name">Nombre</label>
+        <input type="text" id="cf-name" name="Nombre" required placeholder="Tu nombre">
+      </div>
+      <div class="form-row">
+        <label for="cf-email">Correo</label>
+        <input type="email" id="cf-email" name="Correo" required placeholder="tucorreo@ejemplo.com">
+      </div>
+      <div class="form-row">
+        <label for="cf-phone">Teléfono (opcional)</label>
+        <input type="tel" id="cf-phone" name="Teléfono" placeholder="+1 809 000 0000">
+      </div>
+      <div class="form-row">
+        <label for="cf-msg">Mensaje</label>
+        <textarea id="cf-msg" name="Mensaje" required rows="3" placeholder="¿Qué necesitas para tu negocio?"></textarea>
+      </div>
+
+      <div id="form-error" role="alert"></div>
+
+      <button type="submit" id="form-submit-btn">
+        <span id="form-submit-text">Enviar mensaje</span>
+      </button>
+    </form>
+
+    <div id="form-success">
+      <div id="form-success-icon">✓</div>
+      <h4>¡Mensaje enviado!</h4>
+      <p>Gracias por escribirnos. Te respondemos a tu correo en menos de 24 horas.</p>
+    </div>
+
+    <p id="modal-alt">
+      O escríbenos directo a
+      <a href="mailto:prisma.agency.net@gmail.com">prisma.agency.net@gmail.com</a>
+    </p>
+  </div>
+</div>
+
+<!-- ============================================================
+     CHAT WIDGET
+     Botón flotante en esquina inferior derecha.
+     El chat se conecta a Gemini API.
+     Para cambiar de API: editar la función sendToAI() al final.
+     ============================================================ -->
+
+<!-- Botón flotante que abre/cierra el chat -->
+<button id="chat-btn" aria-label="Abrir chat">
+  <!-- Ícono de chat -->
+  <svg id="chat-icon-open" width="24" height="24" viewBox="0 0 24 24"
+       fill="none" stroke="#fff" stroke-width="2"
+       stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+  <!-- Ícono X que aparece cuando el chat está abierto -->
+  <svg id="chat-icon-close" width="20" height="20" viewBox="0 0 24 24"
+       fill="none" stroke="#fff" stroke-width="2.5"
+       stroke-linecap="round" stroke-linejoin="round"
+       style="display:none">
+    <line x1="18" y1="6" x2="6" y2="18"/>
+    <line x1="6" y1="6" x2="18" y2="18"/>
+  </svg>
+</button>
+
+<!-- Ventana del chat -->
+<div id="chat-window">
+
+  <!-- Cabecera -->
+  <div id="chat-header">
+    <div id="chat-avatar">✦</div>
+    <div>
+      <div id="chat-name">Prisma Agency</div>
+      <div id="chat-status">
+        <span id="status-dot"></span>
+        Asistente virtual · responde al instante
+      </div>
+    </div>
+  </div>
+
+  <!-- Área de mensajes — aquí se renderizan los bubbles -->
+  <div id="chat-messages"></div>
+
+  <!-- Respuestas rápidas — desaparecen al primer mensaje -->
+  <div id="chat-quick">
+    <button class="qr-btn" data-msg="¿Qué servicios ofrecen?">🌐 Servicios</button>
+    <button class="qr-btn" data-msg="¿Cuánto cuesta una web?">💰 Precios</button>
+    <button class="qr-btn" data-msg="¿Cómo es el proceso de trabajo?">📋 Proceso</button>
+    <button class="qr-btn" data-msg="¿Qué incluye el chatbot con IA?">🤖 Chatbot IA</button>
+  </div>
+
+  <!-- Input del usuario -->
+  <div id="chat-input-row">
+    <textarea
+      id="chat-input"
+      placeholder="Escribe tu pregunta…"
+      rows="1"
+      maxlength="500"
+    ></textarea>
+    <button id="chat-send" aria-label="Enviar">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"
+           stroke="none"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+    </button>
+  </div>
+
+  <div id="chat-footer">Asistente con IA · Prisma Agency</div>
+</div>
+
+
+<style>
+/* ============================================================
+   MODAL DE CONTACTO
+   ============================================================ */
+#modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  align-items: center;
+  justify-content: center;
+}
+#modal-overlay.open {
+  display: flex;
+  animation: fadeIn 0.2s ease;
+}
+#modal-box {
+  background: #0F0F1A;
+  border: 1px solid rgba(123, 92, 245, 0.35);
+  border-radius: 20px;
+  padding: 2.25rem 2rem;
+  max-width: 420px;
+  width: 90%;
+  max-height: 88vh;
+  overflow-y: auto;
+  text-align: center;
+  position: relative;
+  animation: slideUp 0.25s ease;
+  font-family: 'Inter', sans-serif;
+}
+#modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.1rem;
+  background: none;
+  border: none;
+  color: #7A7A9A;
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+#modal-close:hover { color: #F0F0F0; }
+#modal-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+#modal-box h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #F0F0F0;
+  margin-bottom: 0.5rem;
+}
+#modal-box p {
+  font-size: 0.875rem;
+  color: #7A7A9A;
+  margin-bottom: 0.4rem;
+}
+#modal-email {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #00D4FF;
+  text-decoration: none;
+  margin: 0.5rem 0 0.75rem;
+  word-break: break-all;
+}
+#modal-email:hover { text-decoration: underline; }
+#modal-sub { font-size: 0.82rem !important; margin-bottom: 1.4rem !important; }
+
+/* Formulario de contacto */
+#contact-form { text-align: left; display: flex; flex-direction: column; gap: 0.85rem; }
+.form-row { display: flex; flex-direction: column; gap: 0.35rem; }
+.form-row label { font-size: 0.72rem; color: #7A7A9A; letter-spacing: 0.02em; }
+.form-row input, .form-row textarea {
+  background: #1C1C28; border: 1px solid rgba(255,255,255,0.08); border-radius: 9px;
+  color: #F0F0F0; font-family: 'Inter', sans-serif; font-size: 0.86rem;
+  padding: 0.65rem 0.8rem; outline: none; resize: none; transition: border-color 0.2s;
+}
+.form-row input:focus, .form-row textarea:focus { border-color: rgba(123,92,245,0.55); }
+.form-row input.invalid, .form-row textarea.invalid { border-color: #FF6B6B; }
+#form-error {
+  display: none; font-size: 0.78rem; color: #FF6B6B;
+  background: rgba(255,107,107,0.08); border: 1px solid rgba(255,107,107,0.25);
+  border-radius: 8px; padding: 0.55rem 0.75rem;
+}
+#form-error.show { display: block; }
+#form-submit-btn {
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  background: linear-gradient(90deg, #7B5CF5, #00D4FF);
+  color: #fff; border: none; text-decoration: none;
+  padding: 0.8rem 1.75rem; border-radius: 9px; font-family: 'Inter', sans-serif;
+  font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: opacity 0.2s;
+}
+#form-submit-btn:hover { opacity: 0.85; }
+#form-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-spinner {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.35); border-top-color: #fff;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+#modal-alt { font-size: 0.78rem !important; margin-top: 1.1rem !important; margin-bottom: 0 !important; }
+#modal-alt a { color: #00D4FF; text-decoration: none; }
+#modal-alt a:hover { text-decoration: underline; }
+
+/* Estado de éxito */
+#form-success { display: none; text-align: center; padding: 0.5rem 0 0.25rem; }
+#form-success.show { display: block; }
+#form-success-icon {
+  width: 48px; height: 48px; border-radius: 50%; margin: 0 auto 0.9rem;
+  background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.4);
+  color: #22C55E; font-size: 1.4rem; display: flex; align-items: center; justify-content: center;
+}
+#form-success h4 { font-family: 'Syne', sans-serif; font-size: 1.1rem; color: #F0F0F0; margin-bottom: 0.4rem; }
+#form-success p { font-size: 0.85rem; color: #7A7A9A; }
+
+/* ============================================================
+   CHAT WIDGET
+   ============================================================ */
+
+/* Botón flotante */
+#chat-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 1000;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7B5CF5, #00D4FF);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 24px rgba(123, 92, 245, 0.5);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+#chat-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 32px rgba(123, 92, 245, 0.7);
+}
+
+/* Ventana del chat */
+#chat-window {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  bottom: 5.5rem;
+  right: 1.5rem;
+  z-index: 999;
+  width: 360px;
+  height: 520px;
+  background: #0F0F1A;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+  font-family: 'Inter', sans-serif;
+}
+#chat-window.open {
+  display: flex;
+  animation: slideUp 0.22s ease;
+}
+
+/* Cabecera del chat */
+#chat-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.1rem;
+  background: #0D0D14;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+}
+#chat-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7B5CF5, #00D4FF);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+#chat-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #F0F0F0;
+}
+#chat-status {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.68rem;
+  color: #7A7A9A;
+  margin-top: 2px;
+}
+#status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22C55E;
+}
+
+/* Área de mensajes */
+#chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  scroll-behavior: smooth;
+}
+#chat-messages::-webkit-scrollbar { width: 3px; }
+#chat-messages::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.08);
+  border-radius: 3px;
+}
+
+/* Burbujas de mensaje */
+.msg-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  max-width: 85%;
+}
+.msg-row.user { align-self: flex-end; align-items: flex-end; }
+.msg-row.bot  { align-self: flex-start; align-items: flex-start; }
+
+.msg-bubble {
+  padding: 0.6rem 0.85rem;
+  border-radius: 14px;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+.msg-row.user .msg-bubble {
+  background: linear-gradient(135deg, #7B5CF5, #5A3FD4);
+  color: #fff;
+  border-bottom-right-radius: 3px;
+}
+.msg-row.bot .msg-bubble {
+  background: #1C1C28;
+  color: #E0E0F0;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-bottom-left-radius: 3px;
+}
+.msg-time {
+  font-size: 0.6rem;
+  color: #3A3A5A;
+}
+
+/* Indicador de escritura */
+.typing-indicator {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0.6rem 0.85rem;
+  background: #1C1C28;
+  border-radius: 14px;
+  border-bottom-left-radius: 3px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.typing-indicator span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7B5CF5;
+  animation: typing 1.2s infinite;
+}
+.typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+.typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typing {
+  0%, 60%, 100% { opacity: 0.25; transform: scale(0.8); }
+  30%           { opacity: 1;    transform: scale(1);   }
+}
+
+/* Respuestas rápidas */
+#chat-quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0 0.9rem 0.6rem;
+  flex-shrink: 0;
+}
+.qr-btn {
+  background: #1C1C28;
+  border: 1px solid rgba(123, 92, 245, 0.3);
+  color: #A090F0;
+  padding: 0.32rem 0.75rem;
+  border-radius: 100px;
+  font-size: 0.72rem;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.18s;
+}
+.qr-btn:hover {
+  background: rgba(123, 92, 245, 0.15);
+  color: #C8B8FF;
+}
+
+/* Input row */
+#chat-input-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  padding: 0.65rem 0.9rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  background: #0D0D14;
+  flex-shrink: 0;
+}
+#chat-input {
+  flex: 1;
+  background: #1C1C28;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  color: #F0F0F0;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  padding: 0.6rem 0.8rem;
+  resize: none;
+  outline: none;
+  max-height: 90px;
+  transition: border-color 0.2s;
+}
+#chat-input:focus  { border-color: rgba(123, 92, 245, 0.45); }
+#chat-input::placeholder { color: #3A3A5A; }
+#chat-send {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #7B5CF5, #00D4FF);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+#chat-send:hover    { opacity: 0.85; }
+#chat-send:disabled { opacity: 0.35; cursor: not-allowed; }
+
+#chat-footer {
+  text-align: center;
+  padding: 0.3rem;
+  font-size: 0.58rem;
+  color: #252535;
+  flex-shrink: 0;
+}
+
+/* Animaciones compartidas */
+@keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+
+
+<script>
+/* ============================================================
+   MODAL DE CONTACTO
+   ============================================================ */
+(function () {
+  var overlay = document.getElementById('modal-overlay');
+  var btnContacto = document.getElementById('btn-contacto');
+  var btnContactoMobile = document.getElementById('btn-contacto-mobile');
+  var btnClose    = document.getElementById('modal-close');
+
+  // También conectar cualquier otro botón CTA de la página
+  var ctaBtns = document.querySelectorAll('.cta-email-trigger');
+
+  var form        = document.getElementById('contact-form');
+  var formError   = document.getElementById('form-error');
+  var formSuccess = document.getElementById('form-success');
+  var submitBtn   = document.getElementById('form-submit-btn');
+  var submitText  = document.getElementById('form-submit-text');
+
+  function resetForm() {
+    form.reset();
+    form.style.display = '';
+    formSuccess.classList.remove('show');
+    formError.classList.remove('show');
+    formError.textContent = '';
+    document.getElementById('modal-alt').style.display = '';
+    [].forEach.call(form.querySelectorAll('.invalid'), function (el) { el.classList.remove('invalid'); });
+  }
+
+  function openModal()  {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(resetForm, 250); // esperar a que cierre la animación
+  }
+
+  if (btnContacto)       btnContacto.addEventListener('click', openModal);
+  if (btnContactoMobile) btnContactoMobile.addEventListener('click', function () {
+    closeMobileNav();
+    openModal();
+  });
+  if (btnClose)    btnClose.addEventListener('click', closeModal);
+
+  // Cerrar al hacer clic fuera del box
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closeModal();
+  });
+
+  // Cerrar con tecla Escape
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  ctaBtns.forEach(function(btn) {
+    btn.addEventListener('click', openModal);
+  });
+
+  /* --- Envío del formulario --- */
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var name  = document.getElementById('cf-name');
+    var email = document.getElementById('cf-email');
+    var msg   = document.getElementById('cf-msg');
+    var honey = form.querySelector('[name="_honey"]');
+
+    [name, email, msg].forEach(function (el) { el.classList.remove('invalid'); });
+    formError.classList.remove('show');
+
+    // Honeypot anti-spam: si un bot llenó este campo oculto, fingimos éxito y no enviamos nada
+    if (honey && honey.value) {
+      showSuccess();
+      return;
+    }
+
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+    var missing = [];
+    if (!name.value.trim())  missing.push(name);
+    if (!emailOk)            missing.push(email);
+    if (!msg.value.trim())   missing.push(msg);
+
+    if (missing.length) {
+      missing.forEach(function (el) { el.classList.add('invalid'); });
+      formError.textContent = 'Revisa los campos marcados: nombre, correo válido y mensaje son obligatorios.';
+      formError.classList.add('show');
+      missing[0].focus();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitText.innerHTML = '<span class="btn-spinner"></span> Enviando…';
+    submitText.style.display = 'flex';
+    submitText.style.alignItems = 'center';
+    submitText.style.gap = '0.5rem';
+
+    var payload = new FormData(form);
+
+    fetch('https://formsubmit.co/ajax/prisma.agency.net@gmail.com', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: payload
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error('Error de red: ' + res.status);
+        return res.json();
+      })
+      .then(function () {
+        showSuccess();
+      })
+      .catch(function (err) {
+        console.error('Contact form error:', err);
+        submitBtn.disabled = false;
+        submitText.textContent = 'Enviar mensaje';
+        formError.textContent = 'No pudimos enviar tu mensaje. Intenta de nuevo o escríbenos directo a prisma.agency.net@gmail.com';
+        formError.classList.add('show');
+      });
+  });
+
+  function showSuccess() {
+    form.style.display = 'none';
+    document.getElementById('modal-alt').style.display = 'none';
+    formSuccess.classList.add('show');
+    submitBtn.disabled = false;
+    submitText.textContent = 'Enviar mensaje';
+  }
+
+  /* ============================================================
+     MENÚ MÓVIL (hamburguesa)
+     ============================================================ */
+  var menuBtn    = document.getElementById('menu-mobile-btn');
+  var mobileNav  = document.getElementById('mobile-nav');
+  var mobileOpen = false;
+
+  function openMobileNav() {
+    mobileOpen = true;
+    mobileNav.classList.add('open');
+    mobileNav.setAttribute('aria-hidden', 'false');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    menuBtn.textContent = '✕';
+  }
+  function closeMobileNav() {
+    mobileOpen = false;
+    mobileNav.classList.remove('open');
+    mobileNav.setAttribute('aria-hidden', 'true');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.textContent = '☰';
+  }
+  function toggleMobileNav() {
+    mobileOpen ? closeMobileNav() : openMobileNav();
+  }
+
+  if (menuBtn) menuBtn.addEventListener('click', toggleMobileNav);
+
+  // Cerrar el menú móvil al elegir un link de sección
+  document.querySelectorAll('.mobile-nav-link').forEach(function (link) {
+    link.addEventListener('click', closeMobileNav);
+  });
+
+  // Cerrar con Escape también
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && mobileOpen) closeMobileNav();
+  });
+})();
+
+
+/* ============================================================
+   CHAT WIDGET
+   ============================================================ */
+(function () {
+
+  /* --- Elementos del DOM --- */
+  var chatBtn      = document.getElementById('chat-btn');
+  var chatWindow   = document.getElementById('chat-window');
+  var chatMessages = document.getElementById('chat-messages');
+  var chatInput    = document.getElementById('chat-input');
+  var chatSend     = document.getElementById('chat-send');
+  var chatQuick    = document.getElementById('chat-quick');
+  var iconOpen     = document.getElementById('chat-icon-open');
+  var iconClose    = document.getElementById('chat-icon-close');
+
+  /* --- Estado --- */
+  var isOpen       = false;
+  var isLoading    = false;
+  var history      = [];   // historial de mensajes para contexto de la API
+  var quickShown   = true; // controla si los quick-replies están visibles
+
+  /* ============================================================
+     MOTOR DE RESPUESTAS DEL ASISTENTE
+     100% local — no depende de ninguna API externa, así que nunca
+     se "cae" por una key vencida, un límite de cuota o falta de red.
+     Funciona por reconocimiento de palabras clave sobre el contenido
+     real de la web (servicios, precios, proceso, FAQ).
+
+     Para conectarlo a un modelo de IA real en el futuro (ej. tu propio
+     backend seguro que llame a la API de Claude/Gemini sin exponer la
+     key en el navegador), reemplaza generateReply() por una llamada
+     fetch() a tu servidor.
+     ============================================================ */
+  var EMAIL = 'prisma.agency.net@gmail.com';
+
+  var RULES = [
+    {
+      k: ['precio','precios','costo','cuesta','cuanto','vale','tarifa','plan','planes','presupuesto'],
+      a: 'Tenemos 4 opciones: Lanzamiento $300 (1 página), Corporativo $650 (5 secciones + SEO, el más popular), Prisma Pro $1,100 (con chatbot de IA incluido) y Suscripción $50/mes desde el inicio. ¿Quieres que te recomiende cuál se ajusta mejor a tu negocio?'
+    },
+    {
+      k: ['servicio','servicios','que hacen','ofrecen','ofrece'],
+      a: 'Hacemos diseño web, chatbots con IA, identidad de marca (logo y colores), SEO básico, Google My Business y contenido para redes sociales. Todo pensado para que tu negocio se vea profesional desde el primer día. 🌐'
+    },
+    {
+      k: ['proceso','como trabajan','como funciona','pasos','tiempo','cuando','demora','entrega'],
+      a: 'El proceso es simple: nos escribes, te respondemos en menos de 24h, ves la primera versión de tu web en 48 horas, y publicamos con tu dominio propio en menos de 1 semana.'
+    },
+    {
+      k: ['chatbot','ia','inteligencia artificial','bot','asistente virtual'],
+      a: 'El chatbot con IA es un asistente que respondemos preguntas de tus clientes 24/7 y captura leads automáticamente. Está incluido en el paquete Prisma Pro ($1,100). ¿Quieres saber más detalles?'
+    },
+    {
+      k: ['dominio','hosting'],
+      a: 'En Corporativo y Prisma Pro el dominio y hosting del primer año están incluidos. En Lanzamiento incluye el dominio del primer año. En la suscripción mensual, ambos están cubiertos durante todo el contrato.'
+    },
+    {
+      k: ['cambio','cambios','editar','modificar','actualizar','mantenimiento','soporte'],
+      a: 'Con suscripción mensual los cambios menores (textos, fotos, precios) están incluidos. Con pago único tienes 30 días de soporte post-entrega, y luego planes de mantenimiento desde $50/mes.'
+    },
+    {
+      k: ['contacto','contactar','hablar','llamar','whatsapp','correo','email','escribir','humano','persona','asesor','equipo'],
+      a: 'Con gusto te conectamos con el equipo. Usa el botón "Escribir al equipo" arriba, o escríbenos directo a ' + EMAIL + '. Te respondemos en menos de 24 horas.'
+    },
+    {
+      k: ['hola','buenas','buenos dias','buenas tardes','buenas noches','hey','hi'],
+      a: '¡Hola! 👋 Un gusto saludarte. Puedo contarte sobre nuestros servicios, precios o proceso de trabajo. ¿Qué te gustaría saber?'
+    },
+    {
+      k: ['gracias','genial','perfecto','excelente','ok','vale'],
+      a: '¡Con gusto! Si tienes otra pregunta aquí estoy, o escríbenos a ' + EMAIL + ' cuando quieras arrancar tu proyecto.'
+    }
+  ];
+
+  var FALLBACK = 'Contáctanos para más información escribiéndonos al correo ' + EMAIL + ' o usa el botón ubicado arriba a la derecha "Escribir al equipo" y te respondemos en menos de 24 horas. 🙌';
+
+  function normalize(str) {
+    return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+
+  function generateReply(userText) {
+    var text = normalize(userText);
+    var best = null, bestScore = 0;
+
+    RULES.forEach(function (rule) {
+      var score = 0;
+      rule.k.forEach(function (keyword) {
+        if (text.indexOf(normalize(keyword)) !== -1) score++;
+      });
+      if (score > bestScore) { bestScore = score; best = rule; }
+    });
+
+    return best ? best.a : FALLBACK;
+  }
+
+  /* Simula un pequeño tiempo de "pensado" para que se sienta natural */
+  function sendToAI(messages) {
+    var lastUserMsg = messages[messages.length - 1].content;
+    var reply = generateReply(lastUserMsg);
+    var delay = 450 + Math.random() * 500;
+    return new Promise(function (resolve) {
+      setTimeout(function () { resolve(reply); }, delay);
+    });
+  }
+
+
+  /* --- Helpers de UI --- */
+
+  function getTime() {
+    return new Date().toLocaleTimeString('es', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function addMessage(role, text) {
+    var row = document.createElement('div');
+    row.className = 'msg-row ' + role;
+
+    var bubble = document.createElement('div');
+    bubble.className = 'msg-bubble';
+    bubble.innerHTML = text.replace(/\n/g, '<br>');
+
+    var time = document.createElement('div');
+    time.className = 'msg-time';
+    time.textContent = getTime();
+
+    row.appendChild(bubble);
+    row.appendChild(time);
+    chatMessages.appendChild(row);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    return row;
+  }
+
+  function showTyping() {
+    var indicator = document.createElement('div');
+    indicator.className = 'typing-indicator';
+    indicator.id = 'typing-indicator';
+    indicator.innerHTML = '<span></span><span></span><span></span>';
+    chatMessages.appendChild(indicator);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function removeTyping() {
+    var el = document.getElementById('typing-indicator');
+    if (el) el.remove();
+  }
+
+  function autoResize() {
+    chatInput.style.height = 'auto';
+    chatInput.style.height = Math.min(chatInput.scrollHeight, 90) + 'px';
+  }
+
+  function hideQuickReplies() {
+    if (quickShown) {
+      chatQuick.style.display = 'none';
+      quickShown = false;
+    }
+  }
+
+
+  /* --- Lógica principal de envío --- */
+
+  async function sendMessage(text) {
+    text = text.trim();
+    if (!text || isLoading) return;
+
+    hideQuickReplies();
+    chatInput.value = '';
+    chatInput.style.height = 'auto';
+    chatSend.disabled = true;
+    isLoading = true;
+
+    // Mostrar mensaje del usuario
+    addMessage('user', text);
+    history.push({ role: 'user', content: text });
+
+    // Mostrar indicador de escritura
+    showTyping();
+
+    try {
+      /* --- Llamada a la API --- */
+      var reply = await sendToAI(history);
+
+      removeTyping();
+      addMessage('bot', reply);
+      history.push({ role: 'assistant', content: reply });
+
+    } catch (error) {
+      removeTyping();
+      addMessage('bot', 'Hubo un problema de conexion. Escribenos a prisma.agency.net@gmail.com');
+      console.error('Chat error:', error);
+    }
+
+    isLoading = false;
+    chatSend.disabled = false;
+    chatInput.focus();
+  }
+
+
+  /* --- Toggle del chat --- */
+
+  function toggleChat() {
+    isOpen = !isOpen;
+    chatWindow.classList.toggle('open', isOpen);
+    iconOpen.style.display  = isOpen ? 'none'  : 'block';
+    iconClose.style.display = isOpen ? 'block' : 'none';
+
+    // Mensaje de bienvenida al abrir por primera vez
+    if (isOpen && history.length === 0) {
+      setTimeout(function() {
+        addMessage('bot', 'Hola! Soy el asistente de Prisma Agency. En que te puedo ayudar hoy?');
+      }, 300);
+    }
+
+    if (isOpen) chatInput.focus();
+  }
+
+
+  /* --- Event Listeners --- */
+
+  chatBtn.addEventListener('click', toggleChat);
+
+  chatSend.addEventListener('click', function() {
+    sendMessage(chatInput.value);
+  });
+
+  chatInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage(chatInput.value);
+    }
+  });
+
+  chatInput.addEventListener('input', autoResize);
+
+  // Quick replies
+  chatQuick.addEventListener('click', function(e) {
+    if (e.target.classList.contains('qr-btn')) {
+      sendMessage(e.target.dataset.msg);
+    }
+  });
+
+})();
+</script>
+
+</body>
+</html>
